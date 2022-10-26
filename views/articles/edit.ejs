@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/head.ejs')%>
+  <body>
+    <header>
+      <h1>Edit <%= article.title %>'s Info</h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/articles">Articles Index</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h2>Article Attributes:</h2>
+      <form action="/articles/<%= article._id %>?_method=PUT" method="POST">
+        <label for="title">Title:</label>
+        <input type="text" name="title" value="<%= article.title %>" /><br />
+        <label for="body">Body:</label>
+        <textarea name="body"><%= article.body %></textarea><br />
+        <input type="submit" value="Update Article" />
+      </form>
+    </main>
+    <%- include('../partials/footer.ejs')%>
+  </body>
+</html>

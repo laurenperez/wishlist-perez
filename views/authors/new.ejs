@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/head.ejs')%>
+  <body>
+    <header>
+      <h1>Create an Author</h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/authors">Authors Index</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <form action="/authors" method="POST">
+        <label for="name">Author Name:</label>
+        <input type="text" name="name" placeholder="First Last..." />
+        <input type="submit" value="Create Author" />
+      </form>
+    </main>
+    <%- include('../partials/footer.ejs')%>
+  </body>
+</html>
