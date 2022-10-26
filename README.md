@@ -1,8 +1,9 @@
 # Blog
 
-Starter code for the blog project. 
+This repo contains starter code for the blog project. 
 
-This app contains two models, its your job to connect them. 
+The app contains two models, it's your job to connect them.
+
+Authors have many Articles - This is what we call a _one to many_ relationship.
 
 
-Authors have many Articles.
