@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/head.ejs')%>
+  <body>
+    <header>
+      <h1>Show Page for <%= list.name %></h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/lists">List Index</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <h2>List Attributes:</h2>
+        <ul>
+          <li>Name: <%= list.name %></li>
+        </ul>
+      </section>
+      <section>
+        <form action="/lists/<%= list._id %>?_method=DELETE" method="POST">
+          <input type="submit" value="Delete List" />
+        </form>
+      </section>
+      <section>
+        <a href="/lists/<%= list._id %>/edit">Edit</a>
+      </section>
+      <section>
+        <h2>Gifts Written By This List:</h2>
+        <ul>
+          <% for(let i = 0; i < list.gifts.length; i++) { %>
+          <li>
+            <a href="/gifts/<%= list.gifts[i]._id %>"
+              ><%= list.gifts[i].title %></a
+            >
+          </li>
+          <% } %>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

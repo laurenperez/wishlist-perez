@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/head.ejs')%>
+  <body>
+    <header>
+      <h1>Edit <%= gift.title %>'s Info</h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/gifts">Gifts Index</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h2>Gift Attributes:</h2>
+      <form action="/gifts/<%= gift._id %>?_method=PUT" method="post">
+        <select name="listId" class="browser-default">
+            <% for(let i = 0; i < lists.length; i++) { %>
+                <option
+                    value="<%= lists[i]._id %>"
+                    <% if(lists[i]._id.toString() === giftList._id.toString()) { %>
+                        selected
+                    <% } %>>
+                    <%=lists[i].name%>
+                </option>
+            <% } %>
+        </select>
+
+        <label for="name">Name of Item:</label>
+        <input type="text" name="name" /><br />
+        
+        <label for="retaile">Retailer</label>
+        <textarea name="retaile"></textarea><br />
+        
+        <label for="url">Url:</label>
+        <input type="text" name="url" /><br />
+        
+        <label for="imageUrl">Image url:</label>
+        <input type="text" name="imageUrl" /><br />
+        
+        <label for="details">Details:</label>
+        <text-area type="text" name="details" /><br />
+
+        <label for="price">Price:</label>
+        <input type="text" name="price" /><br />
+
+        <label>
+          <input type="checkbox" />
+          <span>Purchased</span>
+        </label>
+
+        <input type="submit" value="Publish Gift" />
+    </main>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var elems = document.querySelectorAll("select");
+        var instances = M.FormSelect.init(elems, {});
+      });
+    </script>
+  </body>
+</html>

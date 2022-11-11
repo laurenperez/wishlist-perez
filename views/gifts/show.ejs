@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/head.ejs')%>
+  <body>
+    <header>
+      <h1><%= gift.title %></h1>
+      <small>by: <a href="/lists/<%= list._id %>"><%= list.name %></a></small>
+      <nav>
+        <ul>
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/gifts">Gifts Index</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section><%= gift.body %></section>
+      <section>
+        <form action="/gifts/<%=gift._id%>?_method=DELETE" method="POST">
+          <input type="submit" value="Delete Gift" />
+        </form>
+      </section>
+      <section>
+        <a href="/gifts/<%=gift._id%>/edit">Edit</a>
+      </section>
+    </main>
+  </body>
+</html>

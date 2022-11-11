@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html>
   <%- include('../partials/head.ejs')%>
-  <body>
+  <body >
     <header>
-      <h1>Authors</h1>
-      <nav>
+      <h1>Lists</h1>
+      <nav class="brown lighten-5">
         <ul>
           <li>
             <a href="/">Home</a>
           </li>
           <li>
-            <a href="/authors/new">Create a new Author</a>
+            <a href="/lists/new">Create a new List</a>
           </li>
         </ul>
       </nav>
     </header>
     <main>
-      <h2>List of Authors</h2>
+      <h2>Gift of Lists</h2>
       <ul>
-        <% for(let i = 0; i < authors.length; i++){ %>
+        <% for(let i = 0; i < lists.length; i++){ %>
         <li>
-          <a href="/authors/<%= authors[i]._id %>"><%= authors[i].name %></a>
+          <a href="/lists/<%= lists[i]._id %>"><%= lists[i].name %></a>
         </li>
         <% } %>
       </ul>
