@@ -8,8 +8,7 @@ const { Schema, model } = mongoose;
 // Define list schema
 const listSchema = new Schema(
   {
-    name: String,
-    address: String,
+    title: String,
     listType: String,
     gifts: [Gift.schema],
   },

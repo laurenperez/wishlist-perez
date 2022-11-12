@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/head.ejs')%>
+  <body>
+    <header>
+      <h1>Create an List</h1>
+      <nav>
+          <a href="/">Home</a>
+          <a href="/users">Family Page</a>
+      </nav>
+    </header>
+    <main>
+      <form action="/lists" method="POST">
+        <label for="name">Name:</label>
+        <input 
+          type="text" 
+          name="name" 
+          placeholder="your name here" 
+        />
+        <label for="address">Delivery Address:</label>
+        <input
+          type="text"
+          name="address"
+          placeholder="where should we send your gifts?"
+        />
+        <label for="family">Which gift exchange are you joining?</label>
+        <select name="family">
+          <option value="" disabled selected>Which gift exchange are you joining?</option>
+          <option value="perez">Perez Family</option>
+          <option value="alabama">Alabama Family</option>
+        </select>
+        <input type="submit" value="Create User" />
+      </form>
+    </main>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var elems = document.querySelectorAll("select");
+        var instances = M.FormSelect.init(elems, {});
+      });
+    </script>
+  </body>
+</html>

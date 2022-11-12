@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/head.ejs')%>
+  <body >
+    <header>
+      <h1>Users</h1>
+      <nav class="brown lighten-5">
+        <a href="/">Home</a>
+        <a href="/users/new">Create a Profile</a>
+      </nav>
+    </header>
+    <main>
+      <P>All Users</p>
+      <% for ( let user of users ) %>
+        <a href="/users/<%= user._id %>"><%= user.name %></a>
+      <% } %>
+    </main>
+  </body>
+</html>

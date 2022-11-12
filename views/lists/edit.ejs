@@ -17,20 +17,12 @@
     </header>
     <main>
       <h2>List Attributes:</h2>
-      <form action="/lists/<%= list._id %>?_method=PUT" method="POST">
-        <label for="name">Name:</label>
+      <form action="/lists/<%=list._id%>?_method=PUT" method="POST">
+        <label for="title">List Title:</label>
         <input 
           type="text" 
-          name="name" 
-          placeholder="what should we call you?" 
-          value="<%= list.name %>"
-        />
-        <label for="address">Delivery Address:</label>
-        <input
-          type="text"
-          name="address"
-          placeholder="where should we send your gifts?"
-          value="<%= list.address %>"
+          name="title" 
+          placeholder="name this list" 
         />
         <label for="listType">Type of List:</label>
         <select name="listType">
@@ -39,7 +31,11 @@
           <option value="Birthday">Birthday</option>
           <option value="Registry">Registry</option>
         </select>
-        <input type="submit" value="Create List" />
+        <input type="submit" value="Save" />
+      </form>
+      <a href="/list/<%=list._id%>">Cancel</a>
+      <form action="/lists/<%=list._id%>?_method=DELETE" method="POST">
+        <input type="submit" value="Delete this List" />
       </form>
     </main>
     <script>
