@@ -42,3 +42,21 @@ input:focus {
   border-bottom: 1px solid #004d40 !important;
   box-shadow: 0 1px 0 0 #004d40 !important;
 }
+
+.gift-image {
+  height: 300px;
+}
+
+.card {
+ width: 350px;
+}
+
+.card-title {
+  background-color: rgba(0,0,0,.6);
+  padding: 10px !important;
+  margin-bottom: 10px;
+}
+
+.purchase-box {
+  padding: 10px 24px;
+}

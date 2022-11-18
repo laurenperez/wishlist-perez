@@ -31,7 +31,7 @@
         </a>
       </section>
       <section>
-        <h1>Gifts in this List</h1>
+        <h1>Items in this List</h1>
         <a
           class="teal darken-4 waves-effect waves-light btn"
           href="/gifts/new/<%=list._id%>"
@@ -39,23 +39,32 @@
         >
         <ul>
           <% list.gifts.forEach( gift => { %>
-          <li>
-            <a href="/gifts/<%= gift._id %>"> <%= gift.name %></a
-            ><span><%= gift.price %></span><span><%= gift.imageUrl %></span>
-            <form action="/gifts/purchased/<%= gift._id %>" method="post">
-              <label for="purchased-<%= gift._id %>">
-                <input
-                  id="purchased-<%= gift._id %>"
-                  type="checkbox"
-                  onClick="this.form.submit()"
-                  <% if (gift.purchased){ %>
-                  checked="checked" 
-                  <% } %>
+            <div class="card">
+              <div class="card-image">
+                <img class="gift-image" src="<%=gift.imageUrl%>" />
+                <span class="card-title"><%= gift.name %></span>
+              </div>
+              <div class="card-content">
+                <p>Can be found at <%= gift.retailer %></p>
+                <p>Price Range : <%= gift.price %></p>
+              </div>
+              <div class="card-action">
+                <a href="/gifts/<%= gift._id %>">More details...</a>
+              </div>
+              <form class="purchase-box" action="/gifts/purchased/<%= gift._id %>" method="post">
+                <label for="purchased-<%= gift._id %>">
+                  <input
+                    id="purchased-<%= gift._id %>"
+                    type="checkbox"
+                    onClick="this.form.submit()"
+                    <% if (gift.purchased){ %>
+                      checked="checked" 
+                    <% } %> 
                   />
-                <span>Purchased</span>
-              </label>
-            </form>
-          </li>
+                  <span>Purchased</span>
+                </label>
+              </form>
+            </div>
           <% }) %>
         </ul>
       </section>

@@ -79,6 +79,7 @@ router.get("/:id/edit", (req, res) => {
     if (err) console.log(err);
     res.render("lists/edit.ejs", {
       list: foundList,
+      currentUser: req.session.currentUser
     });
   });
 });

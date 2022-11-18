@@ -9,10 +9,13 @@ const giftSchema = new Schema({
   name: String,
   retailer: String,
   url: String,
-  imageUrl: String,
+  imageUrl: {
+    type: String,
+    default: "/img/gifts.jpg",
+  },
   details: String,
   price: String,
-  purchased: { type: Boolean, default: false }
+  purchased: { type: Boolean, default: false },
 });
 
 // Create gift model
