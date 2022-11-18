@@ -3,32 +3,65 @@
   <%- include('../partials/head.ejs')%>
   <body>
     <header>
-      <h1>Edit <%= gift.title %>'s Info</h1>
-      <nav>
-        <a href="/">Home</a>
+      <h1>Edit <%= user.name %>'s Profile</h1>
+      <div class="nav">
+        <a href="/sessions/delete">Log Out</a>
         <a href="/users">Family Page</a>
-      </nav>
+      </div>
     </header>
     <main>
       <h2>User Info:</h2>
-      <form action="/gifts/<%= gift._id %>?_method=PUT" method="post">
+      <form action="/users/<%= user._id %>?_method=PUT" method="POST">
         <label for="name">Name</label>
-        <input type="text" name="name" placeholder="update name" /><br />
+        <input
+          type="text"
+          name="name"
+          value="<%=user.name%>"
+          placeholder="update name"
+        /><br />
+
+        <label for="username">Username:</label>
+        <input
+          type="text"
+          name="username"
+          value="<%=user.username%>"
+          placeholder="update username"
+        /><br />
+
+        <label for="name">New Password:</label>
+        <input type="password" name="password" placeholder="update password" />
 
         <label for="address">Delivery Address:</label>
-        <input type="text" name="address" placeholder="update address" /><br />
+        <input
+          type="text"
+          name="address"
+          value="<%=user.address%>"
+          placeholder="update address"
+        /><br />
 
-        <input type="submit" value="Save" />
+        <button
+          class="teal darken-4 waves-effect waves-light btn"
+          type="submit"
+          value="Save"
+        >Save</button>
       </form>
-      <a href="/users/<%=user._id%>">Cancel</a>
+      <a
+        class="teal darken-4 waves-effect waves-light btn"
+        href="/users/<%=user._id%>"
+        >Cancel</a
+      >
       <form action="/users/<%=user._id%>?_method=DELETE" method="POST">
-        <input type="submit" value="Delete My Profile" />
+        <button
+          class="teal darken-4 waves-effect waves-light btn"
+          type="submit"
+          value="Delete My Profile"
+        >Delete My Profile</button>
       </form>
     </main>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        var elems = document.querySelectorAll("select");
-        var instances = M.FormSelect.init(elems, {});
+        let elems = document.querySelectorAll("select");
+        let instances = M.FormSelect.init(elems, {});
       });
     </script>
   </body>

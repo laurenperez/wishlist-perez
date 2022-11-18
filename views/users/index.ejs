@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html>
   <%- include('../partials/head.ejs')%>
-  <body >
+  <body>
     <header>
-      <h1>Users</h1>
-      <nav class="brown lighten-5">
-        <a href="/">Home</a>
-        <a href="/users/new">Create a Profile</a>
-      </nav>
+      <h1>Family</h1>
+      <div class="nav">
+        <a href="/sessions/delete">Log Out</a>
+        <a href="/users/<%=currentUser._id%>">My Profile</a>
+      </div>
     </header>
     <main>
-      <P>All Users</p>
-      <% for ( let user of users ) %>
-        <a href="/users/<%= user._id %>"><%= user.name %></a>
-      <% } %>
+      <P>My Family</P>
+      <% family.forEach( member => { %>
+      <div>
+        <a href="/users/<%=member._id%>"><%= member.name %></a>
+      </div>
+      <% }) %>
     </main>
   </body>
 </html>

@@ -4,56 +4,36 @@
   <body>
     <header>
       <h1>Edit <%= gift.title %>'s Info</h1>
-      <nav>
-        <ul>
-          <li>
-            <a href="/">Home</a>
-          </li>
-          <li>
-            <a href="/gifts">Gifts Index</a>
-          </li>
-        </ul>
-      </nav>
+      <div class="nav">
+        <a href="/sessions/delete">Log Out</a>
+        <a href="/lists/<%= list._id %>">Back to <%= list.title %></a>
+      </div>
     </header>
     <main>
       <h2>Gift Attributes:</h2>
       <form action="/gifts/<%= gift._id %>?_method=PUT" method="post">
-        <select name="listId" class="browser-default">
-            <% for(let i = 0; i < lists.length; i++) { %>
-                <option
-                    value="<%= lists[i]._id %>"
-                    <% if(lists[i]._id.toString() === giftList._id.toString()) { %>
-                        selected
-                    <% } %>>
-                    <%=lists[i].name%>
-                </option>
-            <% } %>
-        </select>
 
-        <label for="name">Name of Item:</label>
-        <input type="text" name="name" /><br />
+
         
-        <label for="retaile">Retailer</label>
-        <textarea name="retaile"></textarea><br />
+        <label for="name">Item Name:</label>
+        <input type="text" name="name" placeholder="A fancy Sweater" value="<%= gift.name %>"/><br />
         
-        <label for="url">Url:</label>
-        <input type="text" name="url" /><br />
+        <label for="retailer">Retailer:</label>
+        <input type="text" name="retailer" placeholder="Macy's" value="<%= gift.retailer %>"/><br />
         
-        <label for="imageUrl">Image url:</label>
-        <input type="text" name="imageUrl" /><br />
+        <label for="url">Purchase Url:</label>
+        <input type="text" name="url" placeholder="https://www.macys.com" value="<%= gift.url %>"/><br />
+        
+        <label for="imageUrl">Image Url:</label>
+        <input type="text" name="imageUrl" placeholder="copy an image URL here (optional)" value="<%= gift.imageUrl %>"/><br />
         
         <label for="details">Details:</label>
-        <text-area type="text" name="details" /><br />
+        <input type="text" name="details" placeholder="size med, color red" value="<%= gift.details %>" /><br />
 
         <label for="price">Price:</label>
-        <input type="text" name="price" /><br />
+        <input type="text" name="price" placeholder="45.00" value="<%= gift.price %>"/><br />
 
-        <label>
-          <input type="checkbox" />
-          <span>Purchased</span>
-        </label>
-
-        <input type="submit" value="Publish Gift" />
+        <button class="teal darken-4 waves-effect waves-light btn" type="submit" >Updtate Item</button>
       </form>
     </main>
     <script>

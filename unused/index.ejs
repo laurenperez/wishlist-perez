@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
   <%- include('../partials/head.ejs')%>
-  <body >
+  <body>
     <header>
       <h1>Lists</h1>
-      <nav class="brown lighten-5">
+      <div class="nav">
         <ul>
           <li>
-            <a href="/">Home</a>
+            <a href="/sessions/delete">Log Out</a>
           </li>
           <li>
-            <a href="/lists/new">Create a new List</a>
+            <a href="/lists/new/">Create a new Wishlist</a>
           </li>
         </ul>
-      </nav>
+      </div>
     </header>
     <main>
-      <h2>Gift of Lists</h2>
+      <h2>All Lists</h2>
       <ul>
         <% for(let i = 0; i < lists.length; i++){ %>
         <li>

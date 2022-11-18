@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <%- include('./partials/head.ejs')%>
+  <body>
+    <header>
+      <h1 class="title">Perez Family Wishlist</h1>
+      <div class="nav">
+        <a href="/users/new">Register for new Account</a>
+      </div>
+    </header>
+    <div class="form-container">
+      <form action="/sessions" method="POST">
+        <input type="text" name="username" placeholder="username" required/>
+        <label for="username"></label>
+        <input type="password" name="password" placeholder="password" required/>
+        <label for="password"></label>
+        <input class="teal darken-4 waves-effect waves-light btn" type="submit" value="Enter" />
+      </form>
+      <% if (error) { %>
+        <div>  
+          <p><%= message %></p>
+        </div>
+      <%}%>
+    </div>
+  </body>
+</html>

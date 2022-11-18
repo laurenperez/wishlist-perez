@@ -12,7 +12,7 @@ const giftSchema = new Schema({
   imageUrl: String,
   details: String,
   price: String,
-  purchansed: Boolean,
+  purchased: { type: Boolean, default: false }
 });
 
 // Create gift model

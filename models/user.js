@@ -9,8 +9,9 @@ const { Schema, model } = mongoose;
 const userSchema = new Schema(
   {
     name: String,
+    username: { type: String, unique: true, required: true },
+    password: { type: String, required: true },
     address: String,
-    family: String,
     lists: [List.schema],
   },
   { timestamps: true }

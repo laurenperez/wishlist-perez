@@ -3,45 +3,68 @@
   <%- include('../partials/head.ejs')%>
   <body>
     <header>
-      <h1>Show Page for <%= list.name %></h1>
-      <nav>
-        <ul>
-          <li>
-            <a href="/">Home</a>
-          </li>
-          <li>
-            <a href="/lists">List Index</a>
-          </li>
-        </ul>
-      </nav>
+      <div class="nav">
+        <a href="/sessions/delete">Log Out</a>
+        <a href="/users">Family Page</a>
+        <a href="/users/<%= currentUser._id %>">Back to My Lists</a>
+      </div>
     </header>
     <main>
       <section>
-        <h2>List Attributes:</h2>
-        <ul>
-          <li>Name: <%= list.name %></li>
-        </ul>
+        <h1><%= list.title %></h1>
+        <p><%= list.listType %></p>
       </section>
       <section>
         <form action="/lists/<%= list._id %>?_method=DELETE" method="POST">
-          <input type="submit" value="Delete List" />
+          <button
+            class="teal darken-4 waves-effect waves-light btn"
+            type="submit"
+          >
+            Delete List
+          </button>
         </form>
+
+        <a
+          class="teal darken-4 waves-effect waves-light btn"
+          href="/lists/<%=list._id%>/edit"
+          >Edit List
+        </a>
       </section>
       <section>
-        <a href="/lists/<%= list._id %>/edit">Edit</a>
-      </section>
-      <section>
-        <h2>Gifts</h2>
+        <h1>Gifts in this List</h1>
+        <a
+          class="teal darken-4 waves-effect waves-light btn"
+          href="/gifts/new/<%=list._id%>"
+          >Add an item to this List</a
+        >
         <ul>
-          <% for(let i = 0; i < list.gifts.length; i++) { %>
+          <% list.gifts.forEach( gift => { %>
           <li>
-            <a href="/gifts/<%= list.gifts[i]._id %>"
-              ><%= list.gifts[i].title %></a
-            >
+            <a href="/gifts/<%= gift._id %>"> <%= gift.name %></a
+            ><span><%= gift.price %></span><span><%= gift.imageUrl %></span>
+            <form action="/gifts/purchased/<%= gift._id %>" method="post">
+              <label for="purchased-<%= gift._id %>">
+                <input
+                  id="purchased-<%= gift._id %>"
+                  type="checkbox"
+                  onClick="this.form.submit()"
+                  <% if (gift.purchased){ %>
+                  checked="checked" 
+                  <% } %>
+                  />
+                <span>Purchased</span>
+              </label>
+            </form>
           </li>
-          <% } %>
+          <% }) %>
         </ul>
       </section>
     </main>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var elems = document.querySelectorAll("select");
+        var instances = M.FormSelect.init(elems, {});
+      });
+    </script>
   </body>
 </html>

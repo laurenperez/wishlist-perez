@@ -3,26 +3,21 @@
   <%- include('../partials/head.ejs')%>
   <body>
     <header>
-      <h1>Edit <%= list.name %>'s Info</h1>
-      <nav>
-        <ul>
-          <li>
-            <a href="/">Home</a>
-          </li>
-          <li>
-            <a href="/lists">Lists Index</a>
-          </li>
-        </ul>
-      </nav>
+      <h1>Edit List: <%= list.title %></h1>
+      <div class="nav">
+        <a href="/sessions/delete">Log Out</a>
+        <a href="/users/<%currentUser._id%>">My Lists</a>
+      </div>
     </header>
     <main>
       <h2>List Attributes:</h2>
       <form action="/lists/<%=list._id%>?_method=PUT" method="POST">
         <label for="title">List Title:</label>
-        <input 
-          type="text" 
-          name="title" 
-          placeholder="name this list" 
+        <input
+          type="text"
+          name="title"
+          placeholder="name this list"
+          value="<%=list.title%>"
         />
         <label for="listType">Type of List:</label>
         <select name="listType">
@@ -31,12 +26,18 @@
           <option value="Birthday">Birthday</option>
           <option value="Registry">Registry</option>
         </select>
-        <input type="submit" value="Save" />
+        <button
+          class="teal darken-4 waves-effect waves-light btn"
+          type="submit"
+        >
+          Save
+        </button>
       </form>
-      <a href="/list/<%=list._id%>">Cancel</a>
-      <form action="/lists/<%=list._id%>?_method=DELETE" method="POST">
-        <input type="submit" value="Delete this List" />
-      </form>
+      <a
+        class="teal darken-4 waves-effect waves-light btn"
+        href="/lists/<%=list._id%>"
+        >Cancel</a
+      >
     </main>
     <script>
       document.addEventListener("DOMContentLoaded", function () {

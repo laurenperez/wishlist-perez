@@ -3,28 +3,31 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
 const List = require("../models/list");
+const bcrypt = require("bcrypt");
 
 // I N D U C E S
 
 // Index
-router.get("/:name/family", (req, res) => {
-  User.find({ family: { $in: [req.params.name] } }, function (err, foundUsers) {
-    if (err) console.log(err);
+router.get("/", async (req, res) => {
+  User.find({}, (err, foundUsers) => {
     res.render("users/index.ejs", {
-      users: foundUsers,
+      family: foundUsers,
+      currentUser: req.session.currentUser,
     });
-  });
-  res.send(req.params.name)
+  })
 });
 
 // New
 router.get("/new", (req, res) => {
-  res.render("users/new.ejs");
+  res.render("users/new.ejs", {
+    currentUser: req.session.currentUser,
+  });
 });
 
 // Delete
 router.delete("/:id", (req, res) => {
   User.findByIdAndRemove(req.params.id, (err, foundUser) => {
+    if (err) console.log(err);
     const listIds = [];
     for (let i = 0; i < foundUser.lists.length; i++) {
       listIds.push(foundUser.lists[i]._id);
@@ -36,7 +39,7 @@ router.delete("/:id", (req, res) => {
         },
       },
       (err, data) => {
-        res.redirect("/users");
+        res.redirect("/");
       }
     );
   });
@@ -44,37 +47,48 @@ router.delete("/:id", (req, res) => {
 
 // Update
 router.put("/:id", (req, res) => {
-  User.findByIdAndUpdate(req.params.id, req.body, () => {
-    res.redirect("/users");
-  });
+  User.findById(req.params.id, (err, user) => {
+  if (err) console.log(err);
+  req.body.password = req.body.password ? bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10)) : user.password
+  User.findByIdAndUpdate(req.params.id, req.body, (err) => {
+      if (err) console.log(err);
+      res.redirect("/users");
+    });
+  })
 });
 
 // Create
 router.post("/", (req, res) => {
+  req.body.password = bcrypt.hashSync(
+    req.body.password,
+    bcrypt.genSaltSync(10)
+  );
   User.create(req.body, (err, createdUser) => {
     if (err) console.log(err);
+    req.session.currentUser = createdUser;
     res.redirect("/users");
   });
 });
 
 // Edit
 router.get("/:id/edit", (req, res) => {
-  User.findById(req.params.id, (err, foundUser) => {
-    if (err) console.log(err);
+  User.findById(req.params.id, (err, user) => {
     res.render("users/edit.ejs", {
-      user: foundUser,
+      user,
+      currentUser: req.session.currentUser,
     });
   });
 });
 
 // Show
 router.get("/:id", (req, res) => {
-  User.findById(req.params.id, (err, foundUser) => {
-    if (err) console.log(err);
+  User.findById(req.params.id, (err, user) => {
+    if (err) console.log(err)
     res.render("users/show.ejs", {
-      user: foundUser,
+      user,
+      currentUser: req.session.currentUser,
     });
-  });
+  })
 });
 
 module.exports = router;
