@@ -14,6 +14,7 @@
         <h1><%= list.title %></h1>
         <p><%= list.listType %></p>
       </section>
+      <% if ( list.owner === currentUser._id ) { %>
       <section>
         <form action="/lists/<%= list._id %>?_method=DELETE" method="POST">
           <button
@@ -29,14 +30,16 @@
           href="/lists/<%=list._id%>/edit"
           >Edit List
         </a>
-      </section>
-      <section>
-        <h1>Items in this List</h1>
         <a
           class="teal darken-4 waves-effect waves-light btn"
           href="/gifts/new/<%=list._id%>"
           >Add an item to this List</a
         >
+      </section>
+      <% } %>
+      <section>
+        <h1>Items in this List</h1>
+        
         <ul>
           <% list.gifts.forEach( gift => { %>
             <div class="card">
@@ -51,6 +54,7 @@
               <div class="card-action">
                 <a href="/gifts/<%= gift._id %>">More details...</a>
               </div>
+              <% if ( currentUser.giftee === user.name ) { %>
               <form class="purchase-box" action="/gifts/purchased/<%= gift._id %>" method="post">
                 <label for="purchased-<%= gift._id %>">
                   <input
@@ -64,6 +68,7 @@
                   <span>Purchased</span>
                 </label>
               </form>
+              <% } %>
             </div>
           <% }) %>
         </ul>

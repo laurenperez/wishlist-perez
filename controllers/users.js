@@ -7,6 +7,34 @@ const bcrypt = require("bcrypt");
 
 // I N D U C E S
 
+const shuffle = (array) => {
+  array.sort((a, b) => 0.5 - Math.random());
+}
+
+const randomDrawing = (familyArray) => {
+  let family = familyArray.map((item)=> item )
+  shuffle(family)
+  for (let i in familyArray) {
+    if (familyArray[i] === family[i]) {
+      randomDrawing(family)
+    }
+  }
+  return family
+}
+
+// Secret Santa Randomizer
+router.get("/secretsanta", async (req, res) => {
+  const foundUsers = await User.find({});
+  const shuffled = randomDrawing(foundUsers)
+  const familyArray = []
+  for (let i in foundUsers) {
+    foundUsers[i].giftee = shuffled[i].name
+    await foundUsers[i].save();
+    familyArray.push({ [foundUsers[i].name] : shuffled[i].name })
+  }
+  res.send(familyArray)
+});
+
 // Index
 router.get("/", async (req, res) => {
   User.find({}, (err, foundUsers) => {

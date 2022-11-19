@@ -63,6 +63,7 @@ router.put("/:id", (req, res) => {
 router.post("/", (req, res) => {
   User.findById(req.session.currentUser._id, (err, user) => {
     if (err) console.log(err);
+    req.body.owner = user._id;
     List.create(req.body, (err, createdList) => {
       if (err) console.log(err);
       user.lists.push(createdList);
@@ -86,12 +87,15 @@ router.get("/:id/edit", (req, res) => {
 
 // Show
 router.get("/:id", (req, res) => {
-  List.findById(req.params.id, (err, foundList) => {
+  List.findById(req.params.id, (err, list) => {
     if (err) console.log(err);
-    console.log(foundList)
-    res.render("lists/show.ejs", {
-      currentUser: req.session.currentUser,
-      list: foundList,
+    User.findById(list.owner, (err, user) => {
+      if (err) console.log(err);
+      res.render("lists/show.ejs", {
+        currentUser: req.session.currentUser,
+        list,
+        user
+      })
     });
   });
 });

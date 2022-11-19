@@ -60,3 +60,7 @@ input:focus {
 .purchase-box {
   padding: 10px 24px;
 }
+
+.giftee {
+  width: 250px;
+}

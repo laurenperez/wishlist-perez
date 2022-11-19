@@ -72,7 +72,9 @@ router.post("/purchased/:id", async (req, res) => {
 
 // Create
 router.post("/:listId", (req, res) => {
+  if ( req.body.imageUrl[0] !== "h" ) req.body.imageUrl = "/img/gifts.jpg";
   List.findById(req.params.listId, (err, list) => {
+    req.body.owner = list.owner;
     Gift.create(req.body, (err, createdGift) => {
       //req.body.listId is ignored due to Schema
       list.gifts.push(createdGift);

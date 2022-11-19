@@ -6,6 +6,7 @@ const { Schema, model } = mongoose;
 
 // Define gift schema
 const giftSchema = new Schema({
+  owner: String,
   name: String,
   retailer: String,
   url: String,
