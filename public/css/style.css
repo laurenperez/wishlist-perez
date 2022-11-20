@@ -1,41 +1,78 @@
 @import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
 
 body {
   font-family: "Montserrat", sans-serif;
   margin: 0 100px;
   background-color: #f6f6f6;
+  font-family: 'Work Sans', sans-serif;
 }
 
 header {
   background-color: #d9d8d2;
   min-height: 30vh;
-}
-
-h1 {
-  font-size: 3rem;
-}
-
-.title {
-  font-family: "Satisfy", cursive;
+  /* background-image: url("../img/bow.png"); */
+  /* background-image: contain; */
 }
 
 .nav > a {
   margin: 0 20px 0 0;
-  color: white;
+  color: #004d40;
 }
+
+/* HomePage Styles */
+
+.home-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: space-around;
+}
+
+.home-header {
+ padding: 20px
+}
+
+.home-title {
+  font-size: 2rem;
+  font-family: "Satisfy", cursive;
+}
+
+.giftbox-container {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gift {
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 75px;
+  height: 75px;
+  margin: 0 20px;
+}
+
+.gift-even {
+  background-image: url("../img/box1.png");
+}
+
+.gift-odd {
+  background-image: url("../img/box2.png");
+}
+
+/* end home */
+
+/* All Forms */
 
 .form-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: white;
-  border-radius: 10px;
-  min-height: 60vh;
-}
-
-.form-contaner > form {
-  width: 50vw;
-  padding: 30px;
+  height: 200px;
+  padding: 10px;
 }
 
 input:focus {
@@ -43,16 +80,20 @@ input:focus {
   box-shadow: 0 1px 0 0 #004d40 !important;
 }
 
+/* end of forms */
+
+/* gift cards */
+
 .gift-image {
   height: 300px;
 }
 
 .card {
- width: 350px;
+  width: 350px;
 }
 
 .card-title {
-  background-color: rgba(0,0,0,.6);
+  background-color: rgba(0, 0, 0, 0.6);
   padding: 10px !important;
   margin-bottom: 10px;
 }
@@ -61,6 +102,55 @@ input:focus {
   padding: 10px 24px;
 }
 
+/* end of gift card */
+
 .giftee {
   width: 250px;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    margin: 0 15px;
+  }
+  .gift {
+    width: 40px;
+    height: 40px;
+  }
+  .giftbox-container {
+    justify-content: space-around;
+  }
+}
+
+/* Fade in animation at landing page */
+
+#giftbox1 {
+  animation: fadeInAnimation ease 2s;
+  animation-iteration-count: 2;
+  animation-fill-mode: forwards;
+}
+
+#giftbox2 {
+  animation: fadeInAnimation ease 4s;
+  animation-iteration-count: 2;
+  animation-fill-mode: forwards;
+}
+
+#giftbox3 {
+  animation: fadeInAnimation ease 6s;
+  animation-iteration-count: 2;
+  animation-fill-mode: forwards;
+}
+
+#giftbox4 {
+  animation: fadeInAnimation ease 8s;
+  animation-iteration-count: 2;
+  animation-fill-mode: forwards;
+}
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
