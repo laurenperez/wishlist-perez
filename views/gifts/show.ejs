@@ -10,7 +10,7 @@
     </header>
     <main>
       <section>
-        <h1><%= gift.name %></h1>
+        <h4><%= gift.name %></h4>
         <p><%= gift.retailer %></p>
         <a href="<%= gift.url %>" target="_blank"
           >Click Here to purchase this gift from <%= gift.retailer %></a
@@ -21,7 +21,7 @@
         <p><%= gift.price %></p>
       </section>
       <% if ( gift.purchased ) { %>
-        <p>This gift has been marked as purchased.</p>
+        <p class="purchase-message">This gift has been marked as purchased.</p>
       <% } %>
       <section>
         <form action="/gifts/<%=gift._id%>?_method=DELETE" method="POST">

@@ -8,12 +8,10 @@
         <a href="/users">Family Page</a>
         <a href="/users/<%= currentUser._id %>">Back to My Lists</a>
       </div>
+      <h4><%= list.title %></h4>
+      <p><%= list.listType %></p>
     </header>
     <main>
-      <section>
-        <h1><%= list.title %></h1>
-        <p><%= list.listType %></p>
-      </section>
       <% if ( list.owner === currentUser._id ) { %>
       <section>
         <form action="/lists/<%= list._id %>?_method=DELETE" method="POST">
@@ -38,9 +36,9 @@
       </section>
       <% } %>
       <section>
-        <h1>Items in this List</h1>
+        <h4>Items in this List</h4>
         
-        <ul>
+        <section class="mosaic">
           <% list.gifts.forEach( gift => { %>
             <div class="card">
               <div class="card-image">
@@ -71,7 +69,7 @@
               <% } %>
             </div>
           <% }) %>
-        </ul>
+          </section>
       </section>
     </main>
     <script>

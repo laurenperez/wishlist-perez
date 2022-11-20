@@ -3,18 +3,16 @@
   <%- include('../partials/head.ejs')%>
   <body>
     <header>
-      <h1>Edit <%= gift.title %>'s Info</h1>
       <div class="nav">
         <a href="/sessions/delete">Log Out</a>
-        <a href="/lists/<%= list._id %>">Back to <%= list.title %></a>
+        <a href="/lists/<%= list._id %>">Back to List</a>
       </div>
+      <h1>Edit Item:</h1>
     </header>
     <main>
-      <h2>Gift Attributes:</h2>
+      <h4>Item Details</h4>
       <form action="/gifts/<%= gift._id %>?_method=PUT" method="post">
 
-
-        
         <label for="name">Item Name:</label>
         <input type="text" name="name" placeholder="A fancy Sweater" value="<%= gift.name %>"/><br />
         

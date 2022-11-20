@@ -3,11 +3,11 @@
   <%- include('../partials/head.ejs')%>
   <body>
     <header>
-      <h1>Create a new Wishlist</h1>
       <div class="nav">
         <a href="/sessions/delete">Log Out</a>
         <a href="/users/<%currentUser._id%>">My Lists</a>
       </div>
+      <h1>Create a new Wishlist</h1>
     </header>
     <main>
       <form action="/lists" method="POST">

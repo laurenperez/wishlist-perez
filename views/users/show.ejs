@@ -10,6 +10,7 @@
         <a href="/users/<%=user._id%>/edit">Edit Profile</a>
         <% } %>
       </div>
+      <h1>My Lists</h1>
     </header>
     <main>
       <section>
@@ -22,15 +23,19 @@
             </li>
           </ul>
         </section>
-        <h1>My Lists</h1>
         <% } else { %>
         <h1><%= user.name %>'s Lists:</h1>
         <% } %>
         <% if ( currentUser._id == user._id ) { %>
           <a class="teal darken-4 waves-effect waves-light btn" href="/lists/new/">Create New List</a>
         <% } %> 
+
         <% user.lists.forEach( list=> { %>
-          <a href="/lists/<%=list._id%>"><%= list.title %></a>
+            <a href="/lists/<%=list._id%>">
+              <p class="list-item">
+                <%= list.title %>
+              </p>
+            </a>
         <% }) %>
       </section>
     </main>
