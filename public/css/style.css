@@ -1,22 +1,41 @@
 @import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Aladin&family=Homemade+Apple&family=Montserrat:wght@300;400;600&family=Nunito:wght@300&family=Overpass:wght@100;300;400&display=swap');
 
 body {
-  font-family: "Montserrat", sans-serif;
+  /* font-family: 'Nunito', sans-serif; */
   margin: 0 100px;
   background-color: #f6f6f6;
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Work Sans", sans-serif;
 }
 
 header {
   background-color: #d9d8d2;
   min-height: 30vh;
-  padding: 20px
+  padding: 20px;
 }
 
 .nav > a {
   margin: 0 20px 0 0;
   color: #004d40;
+}
+
+.my-btn {
+  font-size: 18px;
+  font-weight:300;
+  padding: 1em 2em;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.08), 0 6px 20px 0 rgba(0, 0, 0, 0.08);
+  border: 1px solid #004d40;
+  background-color: #d9d8d2;
+  color: #004d40;
+  margin: 10px 0px;
+  display: inline-block;
+}
+
+.my-btn:hover {
+  color: #d9d8d2;
+  border: 1px solid #004d40;
+  background-color: #004d40;
 }
 
 /* HomePage Styles */
@@ -29,7 +48,7 @@ header {
 }
 
 .home-header {
- padding: 20px
+  padding: 20px;
 }
 
 .home-title {
@@ -85,8 +104,8 @@ input:focus {
 
 .mosaic {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: masonry;
+  grid-template-columns: repeat(auto-fill, 350px);
+  gap: 20px;
 }
 
 .gift-image {
@@ -94,7 +113,7 @@ input:focus {
 }
 
 .card {
-  width: 350px;
+  width: 325px;
 }
 
 .card-title {
@@ -111,20 +130,53 @@ input:focus {
   color: hotpink;
 }
 
-.list-item {
-  width: 300px;
-  height: 50px;
+.list-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #004d40;
+  width: fit-content;
+}
+
+.list-description{
+  height: 150px;
+  width: 200px;
   background-color: #d9d8d2 !important;
   color: #004d40 !important;
   padding: 10px;
-  margin: 10px 0;
+  /* margin: 10px 0; */
 }
+
+.list-img {
+  height: 150px;
+  width: 150px;
+  border-left: 1px solid #004d40;
+  background-image: url("../img/bows.jpeg");
+  background-size: cover;
+}
+
+
 
 /* end of gift card */
 
 .giftee {
-  width: 250px;
+  width: 200px;
+  height: 200px;
 }
+
+.envelope-container {
+  position: relative;
+}
+
+.bow {
+  height: 100px;
+  width: 100px;
+  background-image: url("../img/bow.png");
+  background-size: cover;
+  position: absolute;
+  left: 130px;
+}
+/* MEDIA QUERY MOBILE STYLES */
 
 @media only screen and (max-width: 600px) {
   body {
@@ -136,6 +188,17 @@ input:focus {
   }
   .giftbox-container {
     justify-content: space-around;
+  }
+  .my-btn {
+    color: #d9d8d2;
+    border: 1px solid #004d40;
+    background-color: #004d40;
+  }
+  .mosaic {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
 

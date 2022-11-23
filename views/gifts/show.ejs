@@ -8,36 +8,25 @@
         <a href="/lists/<%= list._id %>">Back to <%= list.title %></a>
       </div>
     </header>
+      <form action="/gifts/<%=gift._id%>?_method=DELETE" method="POST">
+        <button type="submit" class="my-btn">Delete Item</button>
+      </form>
+      <a href="/gifts/<%=gift._id%>/edit" class="my-btn">Edit</a>
     <main>
       <section>
         <h4><%= gift.name %></h4>
         <p><%= gift.retailer %></p>
-        <a href="<%= gift.url %>" target="_blank"
-          >Click Here to purchase this gift from <%= gift.retailer %></a
-        >
+        <a href="<%= gift.url %>" target="_blank">
+          Click Here to purchase this gift from <%= gift.retailer %>
+        </a>
         <p>Item Details:</p>
         <p><%= gift.details %></p>
         <p>Price Range:</p>
         <p><%= gift.price %></p>
       </section>
       <% if ( gift.purchased ) { %>
-        <p class="purchase-message">This gift has been marked as purchased.</p>
+      <p class="purchase-message">This gift has been marked as purchased.</p>
       <% } %>
-      <section>
-        <form action="/gifts/<%=gift._id%>?_method=DELETE" method="POST">
-          <button
-            type="submit"
-            class="teal darken-4 waves-effect waves-light btn"
-          >
-            Delete Item
-          </button>
-        </form>
-        <a
-          href="/gifts/<%=gift._id%>/edit"
-          class="teal darken-4 waves-effect waves-light btn"
-          >Edit</a
-        >
-      </section>
     </main>
   </body>
 </html>

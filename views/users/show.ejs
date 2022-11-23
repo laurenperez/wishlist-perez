@@ -13,12 +13,14 @@
       <h1>My Lists</h1>
     </header>
     <main>
-      <section>
+      <section class="envelope-container">
         <% if ( user.name == currentUser.name ) { %>
+        <div class="bow"></div>
+        <small>click the envelope!</small>
         <section class="giftee">
           <ul class="collapsible">
             <li>
-              <div class="collapsible-header">Reveal Secret Santa Gift Recipient</div>
+              <div class="collapsible-header">Secret Santa Giftee</div>
               <div class="collapsible-body"><span><%= user.giftee %></span></div>
             </li>
           </ul>
@@ -32,9 +34,12 @@
 
         <% user.lists.forEach( list=> { %>
             <a href="/lists/<%=list._id%>">
-              <p class="list-item">
-                <%= list.title %>
-              </p>
+              <div class="list-card card">
+                <div class="list-description">
+                  <p><%= list.title %></p>
+                </div>
+                <div class="list-img"></div>
+              </div>
             </a>
         <% }) %>
       </section>
