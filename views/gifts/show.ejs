@@ -8,10 +8,12 @@
         <a href="/lists/<%= list._id %>">Back to <%= list.title %></a>
       </div>
     </header>
+    <% if ( gift.owner === currentUser.id ) { %>
       <form action="/gifts/<%=gift._id%>?_method=DELETE" method="POST">
         <button type="submit" class="my-btn">Delete Item</button>
       </form>
       <a href="/gifts/<%=gift._id%>/edit" class="my-btn">Edit</a>
+    <% } %>
     <main>
       <section>
         <h4><%= gift.name %></h4>

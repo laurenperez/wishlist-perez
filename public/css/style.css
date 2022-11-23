@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Aladin&family=Homemade+Apple&family=Montserrat:wght@300;400;600&family=Nunito:wght@300&family=Overpass:wght@100;300;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Aladin&family=Homemade+Apple&family=Montserrat:wght@300;400;600&family=Nunito:wght@300&family=Overpass:wght@100;300;400&display=swap");
 
 body {
   /* font-family: 'Nunito', sans-serif; */
@@ -15,15 +15,16 @@ header {
   padding: 20px;
 }
 
-.nav > a {
-  margin: 0 20px 0 0;
+
+a {
   color: #004d40;
+  text-decoration: none;
 }
 
 .my-btn {
   font-size: 18px;
-  font-weight:300;
-  padding: 1em 2em;
+  font-weight: 300;
+  padding: 5px 10px;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.08), 0 6px 20px 0 rgba(0, 0, 0, 0.08);
   border: 1px solid #004d40;
   background-color: #d9d8d2;
@@ -104,16 +105,24 @@ input:focus {
 
 .mosaic {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 350px);
+  grid-template-columns: repeat(auto-fill, 225px);
   gap: 20px;
 }
 
 .gift-image {
-  height: 300px;
+  height: 250px;
 }
 
 .card {
-  width: 325px;
+  width: 250px;
+}
+
+.card-content {
+  padding: 10px !important;
+}
+
+.card-action {
+  padding: 10px !important;
 }
 
 .card-title {
@@ -123,7 +132,7 @@ input:focus {
 }
 
 .purchase-box {
-  padding: 10px 24px;
+  padding: 10px;
 }
 
 .purchase-message {
@@ -138,7 +147,7 @@ input:focus {
   width: fit-content;
 }
 
-.list-description{
+.list-description {
   height: 150px;
   width: 200px;
   background-color: #d9d8d2 !important;
@@ -154,8 +163,6 @@ input:focus {
   background-image: url("../img/bows.jpeg");
   background-size: cover;
 }
-
-
 
 /* end of gift card */
 

@@ -107,6 +107,7 @@ router.get("/:id", (req, res) => {
       res.render("gifts/show.ejs", {
         list,
         gift,
+        currentUser: req.session.currentUser
       });
     });
   });
