@@ -2,12 +2,22 @@
 <html>
   <%- include('../partials/head.ejs')%>
   <body>
-    <header>
-      <div class="nav">
-        <a href="/sessions/delete">Log Out</a>
-        <a href="/lists/<%= list._id %>">Back to <%= list.title %></a>
-      </div>
-    </header>
+
+    <section>
+      <ul class="collapsible">
+        <li>
+          <div class="collapsible-header">
+            <i class="material-icons">menu</i>
+          </div>
+          <div class="collapsible-body">
+            <a class="menu-link" href="/sessions/delete">Log Out</a>
+            <a class="menu-link" href="/users">Family Page</a>
+            <a class="menu-link" href="/lists/<%= list._id %>">Back to <%= list.title %></a>
+          </div>
+        </li>
+      </ul>
+    </section>
+
     <% if ( gift.owner === currentUser.id ) { %>
       <form action="/gifts/<%=gift._id%>?_method=DELETE" method="POST">
         <button type="submit" class="my-btn">Delete Item</button>
@@ -30,5 +40,11 @@
       <p class="purchase-message">This gift has been marked as purchased.</p>
       <% } %>
     </main>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var elems = document.querySelectorAll(".collapsible");
+        var instances = M.Collapsible.init(elems, {});
+      });
+    </script>
   </body>
 </html>

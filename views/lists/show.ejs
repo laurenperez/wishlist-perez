@@ -2,16 +2,24 @@
 <html>
   <%- include('../partials/head.ejs')%>
   <body>
-    <header>
-      <div class="nav">
-        <a href="/sessions/delete">Log Out</a>
-        <a href="/users">Family Page</a>
-        <a href="/users/<%= currentUser._id %>">Back to My Lists</a>
-      </div>
+    
+    <section>
+      <ul class="collapsible">
+        <li>
+          <div class="collapsible-header">
+            <i class="material-icons">menu</i>
+          </div>
+          <div class="collapsible-body">
+            <a class="menu-link" href="/sessions/delete">Log Out</a>
+            <a class="menu-link" href="/users">Family Page</a>
+            <a class="menu-link" href="/users/<%= currentUser._id %>">Back to My Lists</a>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <main>
       <h4><%= list.title %></h4>
       <p><%= list.listType %></p>
-    </header>
-    <main>
       <% if ( list.owner === currentUser._id ) { %>
       <section>
         <form action="/lists/<%= list._id %>?_method=DELETE" method="POST">
@@ -64,6 +72,11 @@
       document.addEventListener("DOMContentLoaded", function () {
         var elems = document.querySelectorAll("select");
         var instances = M.FormSelect.init(elems, {});
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        var elems = document.querySelectorAll(".collapsible");
+        var instances = M.Collapsible.init(elems, {});
       });
     </script>
   </body>
