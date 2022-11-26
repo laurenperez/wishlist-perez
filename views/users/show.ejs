@@ -2,53 +2,76 @@
 <html>
   <%- include('../partials/head.ejs')%>
   <body>
-    <header>
-      <div class="nav">
-        <a href="/sessions/delete">Log Out</a>
-        <a href="/users">Family Page</a>
-        <% if ( currentUser && currentUser._id == user._id) { %>
-        <a href="/users/<%=user._id%>/edit">Edit Profile</a>
-        <% } %>
-      </div>
-      <h1>My Lists</h1>
-    </header>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var elems = document.querySelectorAll(".collapsible");
+        var instances = M.Collapsible.init(elems, {});
+      });
+    </script>
+
+    <section>
+      <ul class="collapsible">
+        <li>
+          <div class="collapsible-header">
+            <i class="material-icons">menu</i>
+          </div>
+          <div class="collapsible-body">
+            <a class="menu-link" href="/sessions/delete">Log Out</a>
+            <a class="menu-link" href="/users">Family Page</a>
+            <% if ( currentUser && currentUser._id == user._id) { %>
+            <a class="menu-link" href="/users/<%=user._id%>/edit">Edit My Profile</a>
+            <% } %>
+          </div>
+        </li>
+      </ul>
+    </section>
+
     <main>
+      <section>
+        <% if ( user.name !== currentUser.name ) { %>
+        <h1><%= user.name %>'s Lists:</h1>
+        <% } else { %>
+        <h1>My Lists:</h1>
+        <% } %>
+      </section>
+
+      <section>
+        <% if ( currentUser._id == user._id ) { %>
+        <a class="my-btn" href="/lists/new/">Create New List</a>
+        <% } %>
+      </section>
+
+      <!-- ALL LISTS  -->
+      <% user.lists.forEach( list=> { %>
+      <section>
+        <a href="/lists/<%=list._id%>">
+          <div class="list-card card">
+            <div class="list-description">
+              <p><%= list.title %></p>
+            </div>
+            <div class="list-img"></div>
+          </div>
+        </a>
+      </section>
+      <% }) %>
+
+      <!-- GIFT ENVELOPE  -->
       <section class="envelope-container">
         <% if ( user.name == currentUser.name ) { %>
         <div class="bow"></div>
-        <small>click the envelope!</small>
+        <p>Click the envelope!</p>
         <section class="giftee">
           <ul class="collapsible">
             <li>
               <div class="collapsible-header">Secret Santa Giftee</div>
-              <div class="collapsible-body"><span><%= user.giftee %></span></div>
+              <div class="collapsible-body">
+                <span><%= user.giftee %></span>
+              </div>
             </li>
           </ul>
+          <% } %>
         </section>
-        <% } else { %>
-        <h1><%= user.name %>'s Lists:</h1>
-        <% } %>
-        <% if ( currentUser._id == user._id ) { %>
-          <a class="teal darken-4 waves-effect waves-light btn" href="/lists/new/">Create New List</a>
-        <% } %> 
-
-        <% user.lists.forEach( list=> { %>
-            <a href="/lists/<%=list._id%>">
-              <div class="list-card card">
-                <div class="list-description">
-                  <p><%= list.title %></p>
-                </div>
-                <div class="list-img"></div>
-              </div>
-            </a>
-        <% }) %>
       </section>
     </main>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.collapsible');
-        var instances = M.Collapsible.init(elems, {});
-      });
-    </script>
   </body>
 </html>

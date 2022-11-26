@@ -2,15 +2,28 @@
 <html>
   <%- include('../partials/head.ejs')%>
   <body>
-    <header>
-      <div class="nav">
-        <a href="/sessions/delete">Log Out</a>
-        <a href="/users/<%=currentUser._id%>">My Profile</a>
-      </div>
-      <h1>Family</h1>
-    </header>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var elems = document.querySelectorAll(".collapsible");
+        var instances = M.Collapsible.init(elems, {});
+      });
+    </script>
+
+    <section>
+      <ul class="collapsible">
+        <li>
+          <div class="collapsible-header">
+            <i class="material-icons">menu</i>
+          </div>
+          <div class="collapsible-body">
+            <a class="menu-link" href="/sessions/delete">Log Out</a>
+            <a class="menu-link" href="/users/<%=currentUser._id%>">My Profile</a>
+          </div>
+        </li>
+      </ul>
+    </section>
     <main>
-      <P>My Family</P>
+      <h2>My Family</h2>
       <% family.forEach( member => { %>
       <div>
         <a href="/users/<%=member._id%>"><%= member.name %></a>

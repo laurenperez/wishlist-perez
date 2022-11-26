@@ -2,13 +2,28 @@
 <html>
   <%- include('../partials/head.ejs')%>
   <body>
-    <header>
-      <div class="nav">
-        <a href="/sessions/delete">Log Out</a>
-        <a href="/users">Family Page</a>
-      </div>
-      <h1>Edit <%= user.name %>'s Profile</h1>
-    </header>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var elems = document.querySelectorAll(".collapsible");
+        var instances = M.Collapsible.init(elems, {});
+      });
+    </script>
+
+    <section>
+      <ul class="collapsible">
+        <li>
+          <div class="collapsible-header">
+            <i class="material-icons">menu</i>
+          </div>
+          <div class="collapsible-body">
+            <a class="menu-link" href="/sessions/delete">Log Out</a>
+            <a class="menu-link" href="/users/">Family Page</a>
+            <a class="menu-link" href="/users/<%=currentUser._id%>">Back to My Profile</a>
+          </div>
+        </li>
+      </ul>
+    </section>
+   
     <main>
       <p>User Info:</p>
       <form action="/users/<%= user._id %>?_method=PUT" method="POST">
@@ -46,7 +61,7 @@
         >Save</button>
       </form>
       <a
-        class="teal darken-4 waves-effect waves-light btn"
+        class="my-btn"
         href="/users/<%=user._id%>"
         >Cancel</a
       >
