@@ -35,17 +35,13 @@
         <section class="mosaic">
           <% list.gifts.forEach( gift => { %>
             <a href="/gifts/<%= gift._id %>">
-            <div class="card">
+            <div class="card gift-item">
               <div class="card-image">
                 <img class="gift-image" src="<%=gift.imageUrl%>" />
                 <span class="card-title"><%= gift.name %></span>
               </div>
               <div class="card-content">
-                <p>Can be found at <%= gift.retailer %></p>
                 <p>Price Range : <%= gift.price %></p>
-              </div>
-              <div class="card-action">
-                <p>More details...</p>
               </div>
               
               <% if ( currentUser.giftee === user.name ) { %>

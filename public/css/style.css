@@ -3,7 +3,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Aladin&family=Homemade+Apple&family=Montserrat:wght@300;400;600&family=Nunito:wght@300&family=Overpass:wght@100;300;400&display=swap");
 
 body {
-  /* font-family: 'Nunito', sans-serif; */
   margin: 0 100px;
   background-color: #f6f6f6;
   font-family: "Work Sans", sans-serif;
@@ -105,16 +104,28 @@ input:focus {
 
 /* end of forms */
 
+.family-names {
+  font-size: 1.3rem;
+  height: 50px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding-left: 10px
+}
 /* gift cards */
 
 .mosaic {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 225px);
-  gap: 20px;
+  display: flex;
+  justify-content: left;
+  align-items: flex-start;
 }
 
 .gift-image {
   height: 250px;
+}
+
+.gift-item {
+  margin-right: 20px;
 }
 
 .card {
@@ -140,7 +151,7 @@ input:focus {
 }
 
 .purchase-message {
-  color: hotpink;
+  color: rgba(159, 19, 68, 0.848);
 }
 
 .list-card {
@@ -192,6 +203,27 @@ input:focus {
   position: absolute;
   left: 130px;
 }
+
+.gift-details {
+  background-color: rgba(0,77,64, .25);
+  border-radius: 2px;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.gift-details-img {
+  background-color: green;
+  height: 300px;
+  margin-left: 20px;
+}
+
+.gift-details h4 {
+  margin: 0 0 10px 0;
+  color: white;
+}
+
+
 /* MEDIA QUERY MOBILE STYLES */
 
 @media only screen and (max-width: 600px) {

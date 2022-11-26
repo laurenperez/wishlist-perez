@@ -25,9 +25,11 @@
     <main>
       <h2>My Family</h2>
       <% family.forEach( member => { %>
-      <div>
-        <a href="/users/<%=member._id%>"><%= member.name %></a>
-      </div>
+      <a href="/users/<%=member._id%>">
+        <div class="card family-names">
+          🧝 <%= member.name %>
+        </div>
+       </a>
       <% }) %>
     </main>
   </body>

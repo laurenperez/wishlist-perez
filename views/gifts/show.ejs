@@ -24,21 +24,20 @@
       </form>
       <a href="/gifts/<%=gift._id%>/edit" class="my-btn">Edit</a>
     <% } %>
-    <main>
+    <main class="gift-details">
       <section>
         <h4><%= gift.name %></h4>
-        <p><%= gift.retailer %></p>
         <a href="<%= gift.url %>" target="_blank">
-          Click Here to purchase this gift from <%= gift.retailer %>
+          <b>Purchase this gift from <%= gift.retailer %></b>
         </a>
-        <p>Item Details:</p>
-        <p><%= gift.details %></p>
-        <p>Price Range:</p>
-        <p><%= gift.price %></p>
+        <p><b>Retailer:</b> <%= gift.retailer %></p>
+        <p><b>Item Details:</b> <%= gift.details %></p>
+        <p><b>Price Range:</b> <%= gift.price %></p>
+        <% if ( gift.purchased ) { %>
+        <p class="purchase-message">This gift has been marked as purchased.</p>
+        <% } %>
       </section>
-      <% if ( gift.purchased ) { %>
-      <p class="purchase-message">This gift has been marked as purchased.</p>
-      <% } %>
+      <img src="<%=gift.imageUrl%>" class="gift-details-img" />
     </main>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
