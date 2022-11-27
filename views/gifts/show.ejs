@@ -2,6 +2,14 @@
 <html>
   <%- include('../partials/head.ejs')%>
   <body>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var elems = document.querySelectorAll(".collapsible");
+        var instances = M.Collapsible.init(elems, {});
+        let elems2 = document.querySelectorAll("select");
+        let instances2 = M.FormSelect.init(elems2, {});
+      });
+    </script>
 
     <section>
       <ul class="collapsible">
@@ -39,11 +47,5 @@
       </section>
       <img src="<%=gift.imageUrl%>" class="gift-details-img" />
     </main>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var elems = document.querySelectorAll(".collapsible");
-        var instances = M.Collapsible.init(elems, {});
-      });
-    </script>
   </body>
 </html>

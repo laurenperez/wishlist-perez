@@ -2,6 +2,14 @@
 <html>
   <%- include('../partials/head.ejs')%>
   <body>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var elems = document.querySelectorAll(".collapsible");
+        var instances = M.Collapsible.init(elems, {});
+        let elems2 = document.querySelectorAll("select");
+        let instances2 = M.FormSelect.init(elems2, {});
+      });
+    </script>
     <header>
       <div class="nav">
         <a href="/sessions/delete">Log Out</a>
@@ -34,16 +42,5 @@
         <button class="my-btn" type="submit" >Updtate Item</button>
       </form>
     </main>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var elems = document.querySelectorAll("select");
-        var instances = M.FormSelect.init(elems, {});
-      });
-
-      document.addEventListener("DOMContentLoaded", function () {
-        var elems = document.querySelectorAll(".collapsible");
-        var instances = M.Collapsible.init(elems, {});
-      });
-    </script>
   </body>
 </html>

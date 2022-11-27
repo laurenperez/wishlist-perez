@@ -2,6 +2,14 @@
 <html>
   <%- include('../partials/head.ejs')%>
   <body>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var elems = document.querySelectorAll(".collapsible");
+        var instances = M.Collapsible.init(elems, {});
+        let elems2 = document.querySelectorAll("select");
+        let instances2 = M.FormSelect.init(elems2, {});
+      });
+    </script>
   
     <section>
       <ul class="collapsible">
@@ -43,16 +51,5 @@
         <button class="my-btn" type="submit" >Add Gift</button>
       </form>
     </main>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var elems = document.querySelectorAll("select");
-        var instances = M.FormSelect.init(elems, {});
-      });
-
-      document.addEventListener("DOMContentLoaded", function () {
-        var elems = document.querySelectorAll(".collapsible");
-        var instances = M.Collapsible.init(elems, {});
-      });
-    </script>
   </body>
 </html>

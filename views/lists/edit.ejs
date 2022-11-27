@@ -2,6 +2,14 @@
 <html>
   <%- include('../partials/head.ejs')%>
   <body>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var elems = document.querySelectorAll(".collapsible");
+        var instances = M.Collapsible.init(elems, {});
+        let elems2 = document.querySelectorAll("select");
+        let instances2 = M.FormSelect.init(elems2, {});
+      });
+    </script>
     <section>
       <ul class="collapsible">
         <li>
@@ -42,21 +50,10 @@
         </button>
       </form>
       <a
-        class="teal darken-4 waves-effect waves-light btn"
+        class="my-btn"
         href="/lists/<%=list._id%>"
         >Cancel</a
       >
     </main>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var elems = document.querySelectorAll("select");
-        var instances = M.FormSelect.init(elems, {});
-      });
-
-      document.addEventListener("DOMContentLoaded", function () {
-        var elems = document.querySelectorAll(".collapsible");
-        var instances = M.Collapsible.init(elems, {});
-      });
-    </script>
   </body>
 </html>
